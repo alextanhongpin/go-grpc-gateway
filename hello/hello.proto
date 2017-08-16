@@ -1,0 +1,30 @@
+syntax = "proto3";
+option go_package = "hello";
+package hello;
+
+import "google/api/annotations.proto";
+
+message StringMessage {
+    string value = 1;
+}
+
+message SimpleMessage {
+    string id = 1;
+    int64 num = 2;
+}
+service HelloService {
+    rpc EchoPost(StringMessage) returns (StringMessage) {
+        option (google.api.http) = {
+            post: "/v1/example/echo_post"
+            body: "*"
+        };
+    }
+    rpc Echo(SimpleMessage) returns (SimpleMessage) {
+        option (google.api.http) = {
+            post: "/v1/example/echo/{id}"
+            additional_bindings {
+                get: "/v1/example/echo/{id}/{num}"
+            }
+        };
+    }
+}
