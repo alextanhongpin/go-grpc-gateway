@@ -9,7 +9,7 @@ $ go get -u -v github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
 $ go get -u -v github.com/golang/protobuf/protoc-gen-go
 ```
 
-## Run
+## Compile
 
 Steps to run:
 
@@ -18,7 +18,16 @@ Steps to run:
 3. Generate reverse-proxy with `build-reverse-proxy.sh`
 4. Optionally generate swagger endpoint `build-swagger.sh`
 
-Your service should be up and running at `localhost:9090`.
+## Run
+
+Your service should be up and running at `localhost:9090`:
+
+```
+$ go run server/main.go
+$ go run gateway/main.go
+```
+
+## Endpoints
 
 It has four endpoints:
 
